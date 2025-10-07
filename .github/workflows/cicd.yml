@@ -1,4 +1,4 @@
-name: CICD_Netflix_Clone_media
+name: CICD_Netflix_Clone_Media
 
 on:
   workflow_dispatch:
