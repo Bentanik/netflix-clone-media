@@ -1,1 +1,1 @@
-# netflix-clone-movie
+# netflix-clone-media
