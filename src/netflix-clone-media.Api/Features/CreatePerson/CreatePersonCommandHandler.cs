@@ -1,4 +1,5 @@
-﻿using netflix_clone_media.Api.Infrastructure.Media;
+﻿using netflix_clone_media.Api.Common;
+using netflix_clone_media.Api.Infrastructure.Media;
 using netflix_clone_media.Api.Messages;
 
 namespace netflix_clone_media.Api.Features.CreatePerson;
@@ -30,7 +31,7 @@ public sealed class CreatePersonCommandHandler
 
         if(command.Avatar != null)
         {
-           var mediaServiceDto = await _mediaService.UploadFileAsync(command.Avatar, "Avatar", true);
+           var mediaServiceDto = await _mediaService.UploadFileAsync(command.Avatar, MediaConstant.FolderActor, true);
            avatarId = mediaServiceDto.Id.ToString();
            avatarUrl = mediaServiceDto.Url;
         }
