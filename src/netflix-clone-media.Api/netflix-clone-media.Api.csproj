@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,7 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	  <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+	  <PackageReference Include="Dapper" Version="2.1.21" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.20" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.20" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.20">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Minio" Version="6.0.4" />
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	  <PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
+	  <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+	  <PackageReference Include="Carter" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+	  <PackageReference Include="Microsoft.IdentityModel.Protocols" Version="8.3.0" />
+	  <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.3.0" />
+	  <PackageReference Include="StackExchange.Redis" Version="2.9.17" />
+	  <PackageReference Include="NetflixClone.Shared" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
