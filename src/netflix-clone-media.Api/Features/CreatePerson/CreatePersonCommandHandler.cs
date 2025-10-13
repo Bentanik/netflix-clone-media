@@ -41,9 +41,11 @@ public sealed class CreatePersonCommandHandler
             OtherName = command.OtherName ?? "",
             ShortBio = command.ShortBio ?? "",
             Gender = command.Gender,
-            DateOfBirth = command.DateOfBirth,
             AvatarId = avatarId,
-            AvatarUrl = avatarUrl
+            AvatarUrl = avatarUrl,
+            Day=command.Day,
+            Month=command.Month,
+            Year=command.Year
         };
 
         await _personRepo.AddAsync(person, cancellationToken);

@@ -30,7 +30,9 @@ public class PersonEndpoint : ICarterModule
             ShortBio: request.ShortBio,
             Avatar: request.Avatar,
             Gender: request.Gender,
-            DateOfBirth: DateTime.UtcNow
+            Day: request.Day,
+            Month: request.Month,
+            Year: request.Year
         );
 
         var result = await messageBus.Send(createMediaTypesCommand);
