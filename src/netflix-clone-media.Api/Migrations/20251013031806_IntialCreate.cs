@@ -58,7 +58,9 @@ namespace netflix_clone_media.Api.Migrations
                     AvatarId = table.Column<string>(type: "text", nullable: false),
                     AvatarUrl = table.Column<string>(type: "text", nullable: false),
                     Gender = table.Column<int>(type: "integer", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Day = table.Column<int>(type: "integer", nullable: false),
+                    Month = table.Column<int>(type: "integer", nullable: false),
+                    Year = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },

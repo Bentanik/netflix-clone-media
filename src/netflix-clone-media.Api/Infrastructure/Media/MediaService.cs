@@ -3,8 +3,6 @@
 public class MediaService : IMediaService
 {
     private readonly MinioClient _minio;
-    private readonly string _publicBucket = "public-media";
-    private readonly string _privateBucket = "private-media";
 
     public MediaService(IOptions<MinIOSettings> options, IConfiguration configuration)
     {
@@ -21,7 +19,7 @@ public class MediaService : IMediaService
     public async Task<MediaServiceDto> UploadFileAsync(IFormFile file, string folder, bool? isPublic)
     {
         bool usePublic = isPublic ?? false;
-        var bucket = usePublic ? _publicBucket : _privateBucket;
+        var bucket = usePublic ? IMediaService.PublicBucket : IMediaService.PrivateBucket;
         var key = $"{folder}/{Guid.NewGuid()}_{file.FileName}";
 
         // Ensure bucket exists
@@ -42,7 +40,7 @@ public class MediaService : IMediaService
 
         return new MediaServiceDto(
             Id: key,
-            Url: $"{(usePublic ? "public" : "private")}/{key}",
+            Url: $"{bucket}/{key}",
             Bucket: bucket,
             IsPublic: usePublic
         );

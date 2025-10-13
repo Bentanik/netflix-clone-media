@@ -13,27 +13,25 @@ public class MediaProxyEndpoint : ICarterModule
             .MapGroup(BaseUrl)
             .HasApiVersion(1);
 
-        group.MapGet("public/{*objectKey}", HandlePublicMediaAsync);
-        group.MapGet("private/{*objectKey}", HandlePrivateMediaAsync);
+        group.MapGet("{*objectKey}", HandleMediaAsync);
     }
 
-    private static async Task<IResult> HandlePublicMediaAsync(
-        [FromRoute] string objectKey,
-        [FromServices] IMediaService mediaService)
+    private static async Task<IResult> HandleMediaAsync(
+    [FromRoute] string objectKey,
+    [FromServices] IMediaService mediaService)
     {
         var decodedKey = HttpUtility.UrlDecode(objectKey);
-        var (stream, contentType) = await mediaService.GetFileAsync("public-media", decodedKey);
-        return Results.File(stream, contentType);
-    }
+        var keyParts = decodedKey.Split('/');
 
-    private static async Task<IResult> HandlePrivateMediaAsync(
-        [FromRoute] string objectKey,
-        [FromServices] IMediaService mediaService)
-        //[FromServices] IUserContext userContext)
-    {
-        // check quyền userContext ở đây
+        var bucketType = keyParts[0];
+        var objectPath = string.Join('/', keyParts.Skip(1));
 
-        var (stream, contentType) = await mediaService.GetFileAsync("private-media", objectKey);
-        return Results.File(stream, contentType);
+        if (bucketType == IMediaService.PublicBucket)
+        {
+            var (stream, contentType) = await mediaService.GetFileAsync(IMediaService.PublicBucket, objectPath);
+            return Results.File(stream, contentType);
+        }
+
+        return Results.NotFound();
     }
 }

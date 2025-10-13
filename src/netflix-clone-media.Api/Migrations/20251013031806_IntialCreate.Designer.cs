@@ -12,7 +12,7 @@ using netflix_clone_media.Api.Persistence;
 namespace netflix_clone_media.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251012033353_IntialCreate")]
+    [Migration("20251013031806_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -277,8 +277,8 @@ namespace netflix_clone_media.Api.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Day")
+                        .HasColumnType("integer");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -290,6 +290,9 @@ namespace netflix_clone_media.Api.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("Month")
+                        .HasColumnType("integer");
+
                     b.Property<string>("OtherName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -297,6 +300,9 @@ namespace netflix_clone_media.Api.Migrations
                     b.Property<string>("ShortBio")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

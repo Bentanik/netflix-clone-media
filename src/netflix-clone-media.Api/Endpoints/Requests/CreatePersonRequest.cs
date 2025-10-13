@@ -6,4 +6,6 @@ public record CreatePersonRequest(
     string? ShortBio,
     IFormFile? Avatar,
     Gender Gender,
-    DateTime DateOfBirth);
+    int Day,
+    int Month,
+    int Year);

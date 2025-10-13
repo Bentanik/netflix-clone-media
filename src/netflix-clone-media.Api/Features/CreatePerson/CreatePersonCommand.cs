@@ -7,4 +7,6 @@ public record CreatePersonCommand(
     string? ShortBio,
     IFormFile? Avatar,
     Gender Gender,
-    DateTime DateOfBirth) : IIdempotentRequest, ICommand;
+    int Day,
+    int Month,
+    int Year) : IIdempotentRequest, ICommand;
