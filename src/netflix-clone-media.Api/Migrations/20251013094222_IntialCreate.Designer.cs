@@ -12,7 +12,7 @@ using netflix_clone_media.Api.Persistence;
 namespace netflix_clone_media.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251013031806_IntialCreate")]
+    [Migration("20251013094222_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
