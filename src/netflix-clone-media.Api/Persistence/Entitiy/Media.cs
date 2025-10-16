@@ -7,7 +7,6 @@ public class Media : BaseEntity<Guid>
     public string CoverImageId { get; set; } = default!;
     public string CoverImageUrl { get; set; } = default!;
     public int AgeRating { get; set; } // Example T8, T9
-    public string Country { get; set; } = default!;
     public TimeSpan TotalDuration { get; set; }
     public DateTime ReleaseDate { get; set; }
 
@@ -16,6 +15,7 @@ public class Media : BaseEntity<Guid>
     public ICollection<MediaPart> Parts { get; set; } = []; // For movies
     public ICollection<Episode> Episodes { get; set; } = []; // For single
     public ICollection<MediaTypeMapping> MediaTypes { get; set; } = [];
+    public ICollection<MediaCountries> MediaCountries { get; set; } = [];
     public ICollection<MediaDirector> Directors { get; set; } = [];
     public ICollection<MediaCast> Casts { get; set; } = [];
 }

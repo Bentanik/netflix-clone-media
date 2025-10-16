@@ -37,7 +37,6 @@ public sealed class CreateMediaTypesCommandHandler
 
         var newMediaTypes = command.Names.Select(name => new MediaType
         {
-            Id = Guid.NewGuid(),
             Name = name
         });
 

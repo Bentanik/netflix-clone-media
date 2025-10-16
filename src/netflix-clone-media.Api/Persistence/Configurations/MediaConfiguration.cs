@@ -35,5 +35,9 @@ internal sealed class MediaConfiguration : IEntityTypeConfiguration<Media>
         builder.HasMany(m => m.MediaTypes)
             .WithOne(mt => mt.Media)
             .HasForeignKey(mt => mt.MediaId);
+
+        builder.HasMany(m => m.MediaCountries)
+           .WithOne(mt => mt.Media)
+           .HasForeignKey(mt => mt.MediaId);
     }
 }
