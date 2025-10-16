@@ -20,4 +20,6 @@ public class AppDbContext : DbContext
     public DbSet<Person> Persons { get; set; }
     public DbSet<MediaCast> MediaCasts { get; set; }
     public DbSet<MediaDirector> MediaDirectors { get; set; }
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<MediaCountries> MediaCountries { get; set; }
 }
