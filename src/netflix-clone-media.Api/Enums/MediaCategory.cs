@@ -2,6 +2,6 @@
 
 public enum MediaCategory
 {
-    Single,
-    Series
+    Single = 1,
+    Series = 2
 }

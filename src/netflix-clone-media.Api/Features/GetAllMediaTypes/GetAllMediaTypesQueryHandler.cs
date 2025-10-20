@@ -16,7 +16,7 @@ public sealed class GetAllMediaTypesQueryHandler : IQueryHandler<GetAllMediaType
         var mediaTypes = await _mediaTypeRepo.GetAllAsync(cancellationToken: cancellationToken);
 
         var mediaTypeDtos = mediaTypes
-            .Select(mt => new MediaTypeDto(mt.Name))
+            .Select(mt => new MediaTypeDto(mt.Id, mt.Name))
             .ToList();
 
         return Result<ICollection<MediaTypeDto>>.Success(

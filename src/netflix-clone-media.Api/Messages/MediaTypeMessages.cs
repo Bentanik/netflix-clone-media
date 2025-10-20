@@ -10,4 +10,7 @@ public enum MediaTypeMessages
 
     [Message("Get all media types successfully", "MEDIA_TYPE_03")]
     GetAllMediaTypesSuccessfully,
+
+    [Message("Media type not found", "MEDIA_TYPE_04")]
+    MediaTypeNotFound
 }

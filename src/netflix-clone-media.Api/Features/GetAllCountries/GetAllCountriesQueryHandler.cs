@@ -16,7 +16,7 @@ public sealed class GetAllCountriesQueryHandler : IQueryHandler<GetAllCountriesQ
         var countries = await _countryRepo.GetAllAsync(cancellationToken: cancellationToken);
 
         var countryDtos = countries
-            .Select(mt => new CountryDto(mt.Name))
+            .Select(mt => new CountryDto(mt.Id, mt.Name))
             .ToList();
 
         return Result<ICollection<CountryDto>>.Success(

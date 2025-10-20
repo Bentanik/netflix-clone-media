@@ -2,7 +2,7 @@
 
 public enum CastRole
 {
-    Actor,
-    Director,
-    Producer
+    Actor = 1,
+    Director = 2,
+    Producer = 3
 }

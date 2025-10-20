@@ -10,4 +10,7 @@ public enum CountryMessages
 
     [Message("Get all countries successfully", "COUNTRY_03")]
     GetAllCountriesSuccessfully,
+
+    [Message("Country not found", "COUNTRY_04")]
+    CountryNotFound
 }

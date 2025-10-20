@@ -8,7 +8,7 @@ public class PersonEndpoint : ICarterModule
 
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        var group = app.NewVersionedApi("Person")
+        var group = app.NewVersionedApi("Persons")
             .MapGroup(BaseUrl).HasApiVersion(1);
 
         group.MapPost("", HandleCreatePersonAsync).DisableAntiforgery();

@@ -1,14 +1,14 @@
-﻿using netflix_clone_media.Api.Features.CreatePerson;
+﻿using netflix_clone_media.Api.Features.CreateMedia;
 
 namespace netflix_clone_media.Api.Endpoints;
 
 public class MediaEndpoint : ICarterModule
 {
-    private const string BaseUrl = "/api/v{version:apiVersion}/media";
+    private const string BaseUrl = "/api/v{version:apiVersion}/medias";
 
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        var group = app.NewVersionedApi("Media")
+        var group = app.NewVersionedApi("Medias")
             .MapGroup(BaseUrl).HasApiVersion(1);
 
         group.MapPost("", HandleCreateMediaAsync).DisableAntiforgery();
@@ -18,26 +18,27 @@ public class MediaEndpoint : ICarterModule
     private static async Task<IResult> HandleCreateMediaAsync(
       [FromServices] IMessageBus messageBus,
       [FromServices] IRequestContext requestContext,
-      [FromForm] CreatePersonRequest request)
+      [FromForm] CreateMediaRequest request)
     {
         string requestId = requestContext.GetIdempotencyKey()
             ?? throw new AppExceptions.XRequestIdRequiredException();
 
-        var createMediaTypesCommand = new CreatePersonCommand(
+        var createMediaTypesCommand = new CreateMediaCommand(
             RequestId: requestId,
-            FullName: request.FullName,
-            OtherName: request.OtherName,
-            ShortBio: request.ShortBio,
-            Avatar: request.Avatar,
-            Gender: request.Gender,
-            Day: request.Day,
-            Month: request.Month,
-            Year: request.Year
+            Title: request.Title,
+            Description: request.Description,
+            Thumbnail: request.Thumbnail,
+            Video: request.Video,
+            AgeRating: request.AgeRating,
+            MediaTypes: request.MediaTypes,
+            Countries: request.Countries,
+            Directors: request.Directors,
+            Casts: request.Casts,
+            ReleaseYear: request.ReleaseYear
         );
 
         var result = await messageBus.Send(createMediaTypesCommand);
 
         return result.IsFailure ? Results.BadRequest(result) : Results.Ok(result);
     }
-
 }

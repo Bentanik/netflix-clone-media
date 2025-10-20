@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using netflix_clone_media.Api.Persistence;
@@ -11,9 +12,11 @@ using netflix_clone_media.Api.Persistence;
 namespace netflix_clone_media.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251017155834_IntialCreate123")]
+    partial class IntialCreate123
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,13 +130,13 @@ namespace netflix_clone_media.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ReleaseYear")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -151,29 +154,32 @@ namespace netflix_clone_media.Api.Migrations
 
             modelBuilder.Entity("netflix_clone_media.Api.Persistence.Entitiy.MediaCast", b =>
                 {
-                    b.Property<Guid>("MediaId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("PersonId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("MediaId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uuid");
+
                     b.Property<int>("RoleName")
                         .HasColumnType("integer");
 
-                    b.HasKey("MediaId", "PersonId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediaId");
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("MediaCast", (string)null);
+                    b.ToTable("MediaCasts");
                 });
 
             modelBuilder.Entity("netflix_clone_media.Api.Persistence.Entitiy.MediaCountries", b =>

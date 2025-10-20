@@ -15,6 +15,9 @@ internal sealed class MediaConfiguration : IEntityTypeConfiguration<Media>
         builder.Property(m => m.Category)
             .HasConversion<int>();
 
+        builder.Property(m => m.Status)
+            .HasConversion<int>();
+
         // Relations
         builder.HasMany(m => m.Parts)
             .WithOne(p => p.Media)
